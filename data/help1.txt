@@ -1,0 +1,4 @@
+**THE LIVING TRIBUNAL - MARVEL SUPERHEROES RPG BOT COMMAND LIST**
+`!help` - Displays all possible commands The Living Tribunal can understand.
+`!addme` - Invite me to your game!
+`!roll [effect] [rank] [cs]` - Roll 1d100 [effect, optional] [rank] [cs amount -3cs to +3cs, optional]
