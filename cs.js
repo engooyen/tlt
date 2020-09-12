@@ -317,13 +317,8 @@ function getEffectFromName(name) {
 
 function getRankFromAbbreviation(rank, cs) {
   let columnShift = parseInt(cs)
-  if (columnShift < -3) {
-    columnShift = -3
-  }
-
-  if (columnShift > 3) {
-    columnShift = 3
-  }
+  console.warn("rank:", rank)
+  console.warn("column shift:", columnShift)
 
   for (let i in rankTable) {
     const index = parseInt(i)
@@ -335,12 +330,39 @@ function getRankFromAbbreviation(rank, cs) {
       }
 
       if (targetIndex >= rankTable.length) {
-        targetIndex = rankTable[rankTable.length - 1]
+        targetIndex = rankTable.length - 1
       }
 
       return rankTable[targetIndex]
     }
   }
+}
+
+function rollD10(option) {
+  const options = option.split(" ")
+  console.warn(options)
+
+  let modifier = 0
+  if (options.length) {
+    if (options[0]) {
+      modifier = parseInt(options[0].replace("+", ""))
+    }
+  }
+
+  const roll = Math.floor(Math.random() * 10) + 1
+  console.warn(roll, modifier)
+
+  const embed = {
+    title: `Initiative Roll`,
+    fields: [
+      {
+        name: `${roll} + ${modifier}`,
+        value: roll + modifier,
+      },
+    ],
+  }
+
+  return embed
 }
 
 function rollD100(option) {
@@ -431,5 +453,6 @@ function rollD100(option) {
 
 module.exports = {
   Rank,
+  rollD10,
   rollD100,
 }

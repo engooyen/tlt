@@ -22,7 +22,7 @@
 const Discord = require("discord.js")
 const winston = require("winston")
 const fs = require("fs")
-const { rollD100 } = require("./cs")
+const { rollD10, rollD100 } = require("./cs")
 require("dotenv").config()
 
 // help content
@@ -79,6 +79,11 @@ bot.on("message", async (message) => {
         case "roll":
           {
             embed = rollD100(option)
+          }
+          break
+        case "d10":
+          {
+            embed = rollD10(option)
           }
           break
         default:
